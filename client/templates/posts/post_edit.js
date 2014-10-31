@@ -3,6 +3,7 @@ Template.postEdit.events({
     e.preventDefault();
 
     var currentPostId = this._id;
+    console.log(this);
     var postProperties = {
       url: $(e.target).find('[name=url]').val(),
       title: $(e.target).find('[name=title]').val()
