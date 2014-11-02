@@ -9,26 +9,18 @@ Template.postEdit.events({
       title: $(e.target).find('[name=title]').val()
     };
 
-    Meteor.call('postUpdate', currentPostId, postProperties, function (error, result) {
-      // display the error to the user and abort
-      if (error)
-        return alert(error.reason);
-
-      // show this result but route anyway
-      if (result.postExists)
-        alert("This link has already been posted");
-
-      Router.go('postPage', {_id: result._id});
-    });
+    var errors = validatePost(postProperties);
+    if (errors.title || errors.url)
+      return Session.set('postEditErrors', errors);
     
-    // Posts.update(currentPostId, {$set: postProperties}, function(error) {
-    //   if (error) {
-    //     // display the error to the user
-    //     alert(error.reason);
-    //   } else {
-    //     Router.go('postPage', {_id: currentPostId});
-    //   }
-    // });
+    Posts.update(currentPostId, {$set: postProperties}, function(error) {
+      if (error) {
+        // display the error to the user
+        alert(error.reason);
+      } else {
+        Router.go('postPage', {_id: currentPostId});
+      }
+    });
   },
   'click .delete': function(e) {
     e.preventDefault();
@@ -38,5 +30,18 @@ Template.postEdit.events({
       Posts.remove(currentPostId);
       Router.go('postsList');
     }
+  }
+});
+
+Template.postEdit.created = function () {
+  Session.set('postEditErrors', {});
+};
+
+Template.postEdit.helpers({
+  errorMessage: function (field) {
+    return Session.get('postEditErrors')[field];
+  },
+  errorClass: function(field) {
+    return !!Session.get('postEditErrors')[field] ? 'has-error' : '';
   }
 });
