@@ -1,9 +1,0 @@
-template(name='errors')
-  .errors
-    each errors
-      +error
-
-template(name='error')
-  .alert.alert-danger(role='alert')
-    button.close(type='button', data-dismiss='alert') &times;
-    | #{message}
