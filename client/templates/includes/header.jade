@@ -10,12 +10,12 @@ template(name='header')
         a.navbar-brand(href="{{pathFor 'home'}}") Myscope
       #navigation.navbar-collapse.collapse
         ul.nav.navbar-nav
-          li
+          li(class="{{activeRouteClass 'home' 'newPosts'}}")
             a(href="{{pathFor 'newPosts'}}") New
-          li
+          li(class="{{activeRouteClass 'bestPosts'}}")
             a(href="{{pathFor 'bestPosts'}}") Best
           if currentUser
-            li
+            li(class="{{activeRouteClass 'postSubmit'}}")
               a(href="{{pathFor 'postSubmit'}}") Submit Post
             li.dropdown
               +notifications
