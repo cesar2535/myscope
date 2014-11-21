@@ -1,10 +1,12 @@
 template(name='postItem')
   .post
+    a.btn.btn-default.upvote(href="#", class="{{upvotedClass}}") ⬆
     .post-content
       h3
         a(href="{{url}}", target='_blank') #{title}
         span #{domain}
       p
+        | {{pluralize votes "Vote"}},
         | submitted by #{author},
         a(href="{{pathFor 'postPage'}}") #{commentsCount} comments
         if ownPost

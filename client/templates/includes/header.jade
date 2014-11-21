@@ -7,9 +7,13 @@ template(name='header')
           span.icon-bar
           span.icon-bar
           span.icon-bar
-        a.navbar-brand(href="{{pathFor 'postsList'}}") Myscope
+        a.navbar-brand(href="{{pathFor 'home'}}") Myscope
       #navigation.navbar-collapse.collapse
         ul.nav.navbar-nav
+          li
+            a(href="{{pathFor 'newPosts'}}") New
+          li
+            a(href="{{pathFor 'bestPosts'}}") Best
           if currentUser
             li
               a(href="{{pathFor 'postSubmit'}}") Submit Post
