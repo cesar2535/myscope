@@ -17,7 +17,7 @@ if (Posts.find().count() === 0) {
     userId: sacha._id,
     author: sacha.profile.name,
     url: 'http://sachagreif.com/introducing-telescope/',
-    submitted: new Date(now - 7 * 3600 * 1000),
+    submitted: new Date(now - 7 * 3600 * 1000).getTime(),
     commentsCount: 2,
     upvoters: [],
     votes: 0
@@ -27,7 +27,7 @@ if (Posts.find().count() === 0) {
     postId: telescopeId,
     userId: tom._id,
     author: tom.profile.name,
-    submitted: new Date(now - 5 * 3600 * 1000),
+    submitted: new Date(now - 5 * 3600 * 1000).getTime(),
     body: "Interesting project Sacha, can I get involved?"
   });
 
@@ -35,7 +35,7 @@ if (Posts.find().count() === 0) {
     postId: telescopeId,
     userId: sacha._id,
     author: sacha.profile.name,
-    submitted: new Date(now - 3 * 3600 * 1000),
+    submitted: new Date(now - 3 * 3600 * 1000).getTime(),
     body: "You sure can Tom!"
   });
 
@@ -44,7 +44,7 @@ if (Posts.find().count() === 0) {
     userId: tom._id,
     author: tom.profile.name,
     url: 'http://meteor.com',
-    submitted: new Date(now - 10 * 3600 * 1000),
+    submitted: new Date(now - 10 * 3600 * 1000).getTime(),
     commentsCount: 0,
     upvoters: [],
     votes: 0
@@ -55,7 +55,7 @@ if (Posts.find().count() === 0) {
     userId: tom._id,
     author: tom.profile.name,
     url: 'http://themeteorbook.com',
-    submitted: new Date(now - 12 * 3600 * 1000),
+    submitted: new Date(now - 12 * 3600 * 1000).getTime(),
     commentsCount: 0,
     upvoters: [],
     votes: 0
@@ -67,7 +67,7 @@ if (Posts.find().count() === 0) {
       userId: sacha._id,
       author: sacha.profile.name,
       url: 'http://google.com/?q=test-' + i,
-      submitted: new Date(now - i * 3600 * 1000 + 1),
+      submitted: new Date(now - i * 3600 * 1000 + 1).getTime(),
       commentsCount: 0,
       upvoters: [],
       votes: 0

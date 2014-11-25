@@ -8,6 +8,7 @@ template(name='postItem')
       p
         | {{pluralize votes "Vote"}},
         | submitted by #{author},
+        | {{afterCreated}}
         a(href="{{pathFor 'postPage'}}") #{commentsCount} comments
         if ownPost
           a(href="{{pathFor 'postEdit'}}") Edit
