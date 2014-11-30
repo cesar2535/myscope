@@ -11,6 +11,20 @@ Meteor.publish('singlePost', function (id) {
   return Posts.find(id);
 });
 
+Meteor.publish('newPosts', function (limit) {
+  return Posts.find({}, {
+    sort: {submitted: -1},
+    limit: limit
+  });
+});
+
+Meteor.publish('bestPosts', function (limit) {
+  return Posts.find({}, {
+    sort: {vote: -1, submitted: -1},
+    limit: limit
+  });
+});
+
 Meteor.publish('comments', function (postId) {
   check(postId, String);
   return Comments.find({postId: postId});
