@@ -74,3 +74,8 @@ if (Posts.find().count() === 0) {
     });
   }
 };
+
+Meteor.onConnection(function (connection) {
+  var connectionId = Connections.insert(connection);
+  console.log(connectionId);
+});
